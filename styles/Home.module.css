@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.tag_name {
+  font-size: 18px;
+}
+
 .tag_name, .published_at {
   margin-left: 5px;
   margin-right: 5px;
@@ -46,4 +50,10 @@
   flex-wrap: wrap;
   max-width: 800px;
   margin-top: 3rem;
+}
+
+.github_link {
+  position: absolute;
+  right: 20px;
+  bottom: 20px
 }
