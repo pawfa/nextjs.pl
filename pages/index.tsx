@@ -46,6 +46,7 @@ const intl = new Intl.DateTimeFormat('pl-PL', {
 export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
     const response = await fetch("https://api.github.com/repos/vercel/next.js/releases/latest")
     const {tag_name, published_at} = await response.json();
+    console.log("Published at: "+published_at);
     const publishedDate = intl.format(new Date(published_at));
 
     return {
