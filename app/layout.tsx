@@ -1,12 +1,13 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import '../styles/globals.css'
+import {Analytics} from "./components/Analytics";
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 
-class MyDocument extends Document {
-
-  render() {
+export default function RootLayout({children}: { children: React.ReactNode; }) {
     return (
-      <Html lang="pl">
-        <Head>
+        <html lang="en">
+        <head>
+            <title>Next.js PL</title>
+            <meta name="description" content="Nextjs.pl"/>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
             <script dangerouslySetInnerHTML={{__html:`window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
@@ -15,14 +16,9 @@ class MyDocument extends Document {
                   gtag('config', "${GA_TRACKING_ID}");
               `}}>
             </script>
-        </Head>
-        <body>
-        <Main />
-        <NextScript />
-        </body>
-      </Html>
-    )
-  }
+        </head>
+        <body>{children}</body>
+        <Analytics/>
+        </html>
+    );
 }
-
-export default MyDocument

@@ -1,21 +1,15 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import {GetServerSideProps} from 'next';
+import styles from "../styles/Home.module.css";
 
 interface IndexProps {
     tagName: string
     publishedDate: string
 }
 
-export default function Home({tagName, publishedDate}:IndexProps) {
+export default async function Page() {
+    const {tagName, publishedDate} = await fetchReleaseInfo();
+
     return (
         <div className={styles.container}>
-            <Head>
-                <title>Nextjs.pl</title>
-                <link rel="icon" href="/favicon.ico"/>
-                <meta name="description" content="Nextjs.pl"/>
-            </Head>
-
             <main className={styles.main}>
                 <h1 className={styles.title}>
                     Witaj na <a href="https://nextjs.org">Nextjs.pl!</a>
@@ -34,7 +28,7 @@ export default function Home({tagName, publishedDate}:IndexProps) {
                 </svg>
             </a>
         </div>
-    )
+    );
 }
 
 const intl = new Intl.DateTimeFormat('pl-PL', {
@@ -43,16 +37,14 @@ const intl = new Intl.DateTimeFormat('pl-PL', {
     hour12: false,
 });
 
-export const getServerSideProps: GetServerSideProps<IndexProps> = async () => {
-    const response = await fetch("https://api.github.com/repos/vercel/next.js/releases/latest")
+async function fetchReleaseInfo(): Promise<IndexProps> {
+    const response = await fetch("https://api.github.com/repos/vercel/next.js/releases/latest",{ cache: 'no-store' })
     const {tag_name, published_at} = await response.json();
-    console.log("Published at: "+published_at);
+    // console.log("Published at: " + published_at);
     const publishedDate = intl.format(new Date(published_at));
 
     return {
-        props: {
-            tagName: tag_name,
-            publishedDate
-        },
+        tagName: tag_name,
+        publishedDate
     }
 }
