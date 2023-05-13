@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.css";
+import {HackerNewsFeed} from "./components/HackerNews/HackerNewsFeed";
 
 interface IndexProps {
     tagName: string
@@ -20,6 +21,10 @@ export default async function Page() {
                     className={styles.published_at}>{publishedDate}</p>
                 </div>
             </main>
+
+            {/* @ts-expect-error Async Server Component */}
+            <HackerNewsFeed/>
+
             <a href="https://github.com/pawfa" target="blank" rel="noopener noreferrer" className={styles.github_link}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 640"><title>Github
                     logo</title>
