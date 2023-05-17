@@ -1,6 +1,8 @@
 .container {
   min-height: 60vh;
   padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .github_link {
@@ -11,10 +13,15 @@
 
 .layout {
   display: grid;
-  grid-template-columns: repeat(2, 600px);
+  grid-template-columns: repeat(2, 1fr);
   column-gap: 50px;
   justify-content: center;
   align-items: flex-start;
+}
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 .body {
