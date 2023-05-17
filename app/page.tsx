@@ -1,6 +1,6 @@
 import styles from "../styles/Home.module.css";
 import {HackerNewsFeed} from "./components/HackerNews/HackerNewsFeed";
-import {RedditNewsFeed} from "./components/HackerNews/RedditNewsFeed";
+import {RedditNewsFeed} from "./components/RedditNewsFeed/RedditNewsFeed";
 
 interface IndexProps {
     tagName: string
