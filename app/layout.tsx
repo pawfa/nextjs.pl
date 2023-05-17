@@ -7,8 +7,8 @@ export default function RootLayout({children}: { children: React.ReactNode; }) {
     return (
         <html lang="en">
         <head>
-            <title>Next.js PL</title>
-            <meta name="description" content="Nextjs.pl"/>
+            <title>Nextjs.pl - Agregator wiadomości, informacji i newsów o frameworku Next.js</title>
+            <meta name="description" content="Nextjs.pl to strona agregująca treści dotyczące frameworka Nextjs. Pobierane informacje i newsy z takich stron jak Reddit czy HackerNews."/>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
             <script dangerouslySetInnerHTML={{__html:`window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
