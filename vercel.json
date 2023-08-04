@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/hackernews",
+      "schedule": "0 5 * * *"
+    }
+  ]
+}

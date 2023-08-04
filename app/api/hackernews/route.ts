@@ -45,9 +45,16 @@ export async function GET(request: NextRequest) {
 
     const client = await db.connect();
     for (const feed of feeds) {
-        await client.sql`INSERT INTO hackernews_next_stories (url,title,author,points,date,itemIdUrl,comments) VALUES (${feed.url}, ${feed.title}, ${feed.author}, ${feed.points}, ${feed.date}, ${feed.itemIdUrl}, ${feed.comments});`;
+        await client.sql`INSERT INTO hackernews_next_stories
+                             (url, title, author, points, date, itemIdUrl, comments)
+                         SELECT ${feed.url}, ${feed.title}, ${feed.author}, ${feed.points}, ${feed.date}, ${feed.itemIdUrl}, ${feed.comments}
+                         WHERE NOT EXISTS (SELECT itemIdUrl
+                                           FROM hackernews_next_stories
+                                           WHERE itemIdUrl = ${feed.itemIdUrl});`;
     }
+
     return NextResponse.json({
         body: feeds,
     });
 }
+
