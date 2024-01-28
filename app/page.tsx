@@ -13,8 +13,6 @@ export default async function Page() {
             <div className={styles.layout}>
             {/* @ts-expect-error Async Server Component */}
             <HackerNewsFeed/>
-            {/* @ts-expect-error Async Server Component */}
-            <RedditNewsFeed/>
             </div>
         </div>
     );

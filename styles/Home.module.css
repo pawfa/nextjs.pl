@@ -12,11 +12,9 @@
 }
 
 .layout {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 50px;
+  display: flex;
   justify-content: center;
-  align-items: flex-start;
+  margin: 0 auto;
 }
 @media (max-width: 900px) {
   .layout {
