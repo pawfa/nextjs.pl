@@ -1,8 +1,8 @@
 {
   "crons": [
     {
-      "path": "/api/hackernews",
-      "schedule": "0 5 * * *"
+      "path": "/api/edge",
+      "schedule": "0 0 */3 * *"
     }
   ]
 }
